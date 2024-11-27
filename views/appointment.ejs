@@ -1,0 +1,13 @@
+<h1>Appointments</h1>
+<form action="/appointments/add" method="POST">
+  <input type="text" name="clientName" placeholder="Client Name" required>
+  <input type="datetime-local" name="date" required>
+  <input type="text" name="service" placeholder="Service" required>
+  <textarea name="notes" placeholder="Notes"></textarea>
+  <button type="submit">Add Appointment</button>
+</form>
+<ul>
+  <% appointments.forEach(appointment => { %>
+    <li><%= appointment.clientName %> - <%= appointment.date %></li>
+  <% }) %>
+</ul>
