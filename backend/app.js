@@ -6,21 +6,30 @@ const path = require('path');
 const cors = require('cors');
 const app = express();
 
-// Middleware 
-// app.use(bodyParser.json());
-app.use(cors());
 
-// Serve static files from 'public' directory
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extend:true}));
+
+// Routes
+const loginRoutes = require('./routes/login');
+app.use('/api/login', loginRoutes);
+// Connect to MongoDB
+
+mongoose.connect('mongodb://localhost:27017/crmestei', { useNewUrlParser: true });
+
+// Serve React fronted in production
+
+if (process.env.NODE_ENV === 'production') {
  app.use(express.static(path.join(__dirname, '../frontend/build')));
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/beautyCRM', { useNewUrlParser: true });
+  app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+  });
+}
 
-// Dummie api endpoint
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname,'../frontend/build','index.html')); // Render the 'index.ejs' file
-});
 
 // Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log('CRM app running on port 3000'));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log('CRM app running on port 5000'));
