@@ -5,7 +5,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Appointments from './components/Appointments';
 import Navbar from "./components/Navbar";
-
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
           <Route path='/appointments' element={<Appointments />}>
           </Route>
         </Routes>
+        <Footer />
    </BrowserRouter>
   
     );

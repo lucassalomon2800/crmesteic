@@ -8,4 +8,4 @@ function Customers() {
   );
 }
 
-export default MyComponent;
+export default Customers;
