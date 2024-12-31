@@ -22,8 +22,9 @@ function Login() {
   };
 
   return (
-<div class="container"> <form onSubmit={handleSubmit}> <div>
-        <label>Email:</label>
+<div class="container"> <form onSubmit={handleSubmit}>
+    <h2>Porfavor ingresar sus datos para continuar</h2>    <div>
+        <label>Nombre de usuario</label>
         <input
           type="username"
           value={username}
@@ -32,7 +33,7 @@ function Login() {
         />
       </div>
       <div>
-        <label>Password:</label>
+        <label>Contraseña</label>
         <input
           type="password"
           value={password}

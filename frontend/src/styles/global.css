@@ -7,17 +7,21 @@
       align-items: center;
       color: #333;
     }
+h2  {
+    color:#5a67d8;
+}
 
     .container {
-      background: #fff;
-      padding: 20px 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      width: 100%;
-      max-width: 500px;
-    }
+ background: #fff;
+ padding: 20px 40px;
+ border-radius: 10px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+text-align: center;
+width: 100%;
+max-width: 500px;
+margin: 0 auto;
 
+}
     h1 {
       color: #5a67d8;
       margin-bottom: 20px;
@@ -203,10 +207,17 @@
  
  .nav-logo {
     height: 50px;
+    border-radius: 30%;
+    margin:10px;
   }
   .nav-aco {
-      height: 50px;
+      height: 60px;
       align:center;
+  }
+  .nav-home {
+   height: 40px;
+   align:center;
+   margin:25px;
   }
  
  .nav-links {
@@ -216,7 +227,7 @@
  }
 
  .nav-links a {
-   color: white;                                          text-decoration: none;                                }
+                                   }
  
 
 
