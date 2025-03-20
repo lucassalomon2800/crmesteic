@@ -4,7 +4,7 @@ const EmployeeModel = require('../models/Employee');
 const session = require('express-session');
 
 router.get('/', (req, res) => {
-    console.log('hello');
+
     res.send('Login Get route');
 });
 
@@ -19,7 +19,8 @@ router.post('/', (req, res) => {
                 if (user.password === password) {
                     req.session.username = username;
                     req.session.views = 1;
-                    res.json({ message: 'login successful' });
+                    res.json({ message: 'login successful'});
+                    res.redirect('/');
                 } else {
                     res.status(401).json({ message: 'invalid password' });
                 }
@@ -32,13 +33,29 @@ router.post('/', (req, res) => {
         });
 });
 
+
+router.post('/check', (req, res) => {
+  EmployeeModel.findOne({ name: req.session.username })
+        .then(user => {
+       if (user) {
+    res.status(200).json({ message: 'its login' + req.session.username });
+  } else {
+    res.status(401).json({ message: 'false' });
+  }});
+});
+
+
 // for logout
 router.post('/logout', (req, res) => {
+
+
     req.session.destroy(err => {
         if (err) {
-            res.status(500).json({ message: 'Error logging out' });
+            res.status(500).json({ message: 'Error logout' });
         } else {
-            res.json({ message: 'logout successful' });
+            res.clearCookie('connect.sid'); 
+            res.status(200).json({ message: 'logout successful' });
+                   
         }
     });
 });
