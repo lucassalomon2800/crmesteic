@@ -12,16 +12,14 @@ const MongoStore = require('connect-mongo');
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(require('cookie-parser')());
 // Session Configuration
 app.use(
     session({
         secret: "hola",
         resave: false,
-        saveUninitialized: false,
-        cookie: {
-            maxAge: 1000 * 60 * 60 * 24,
-        },
+        saveUninitialized:true ,
+        cookie:{secure:false},    
         store: MongoStore.create({
             mongoUrl: 'mongodb://localhost:27017/crmesteic',
             collectionName: 'sessions',

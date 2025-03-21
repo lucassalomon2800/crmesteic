@@ -15,7 +15,7 @@ function Login() {
     try {
       const res = await axios.post('/api/login', { username, password });
       setMessage(res.data.message);
-      navigate('/home');
+      window.location.reload(); 
     } catch (err) {
       setMessage(err.response.data.message);
     }
