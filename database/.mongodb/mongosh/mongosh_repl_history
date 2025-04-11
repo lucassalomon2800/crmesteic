@@ -1,0 +1,20 @@
+db.startup_log.find()
+db.startup_log
+show collections
+show.collections
+db.createCollection("Employee")
+db
+cls
+use local
+db
+show dbs
+cls
+db.createEmployee("name : luisa")
+db.createEmployee("name":"luisa")
+show collections
+show dbs
+show databases
+use Employyes
+clear
+show databases
+ls

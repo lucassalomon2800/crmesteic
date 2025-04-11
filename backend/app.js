@@ -12,7 +12,7 @@ const MongoStore = require('connect-mongo');
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(require('cookie-parser')());
+app.use(require('cookie-parser'));
 // Session Configuration
 app.use(
     session({
@@ -28,14 +28,21 @@ app.use(
 );
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/crmesteic', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/crmesteic');
 
-// Routes
+//Routes
 const loginRoutes = require('./routes/login');
-app.use('/api/login', loginRoutes);
+console.log('login',loginRoutes);
+//app.use('/api/login', loginRoutes);
 
 const accountRoutes = require('./routes/account');
-app.use('/api/account',accountRoutes);
+//
+//app.use('/api/account',accountRoutes);
+
+const appointmentRoutes = require('./routes/appointment'); 
+
+//app.use('/appointment', appointmentRoutes);
+
 
 // Serve React frontend in production
 if (process.env.NODE_ENV === 'production') {
